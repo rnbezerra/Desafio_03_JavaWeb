@@ -2,19 +2,22 @@
 ## Eclipse
 #################
 
-*.pydevproject
-.project
+# *.pydevproject
+# .project
 .metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.classpath
-.settings/
-.loadpath
+# bin/
+# tmp/
+# *.tmp
+# *.bak
+# *.swp
+# *~.nib
+# local.properties
+# .classpath
+# .settings/
+# .loadpath
+Apache Tomcat 7.0.34/
+Servers/
+Servers2/
 
 # External tool builders
 .externalToolBuilders/
@@ -46,8 +49,8 @@ local.properties
 [Dd]ebug/
 [Rr]elease/
 x64/
-build/
-[Bb]in/
+# build/
+# [Bb]in/
 [Oo]bj/
 
 # MSTest test Results
