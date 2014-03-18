@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.infnet.domain.Aula;
@@ -54,6 +55,7 @@ public class AulaDAO extends BaseDAO{
     			aula.setId(resultados.getInt("id"));
     			aula.setNome(resultados.getString("nome"));
     			aula.setTurma(resultados.getInt("IdTurma") );
+    			aula.setData( Calendar.getInstance() );
     			aula.getData().setTime( resultados.getDate("Data") );
     			aulas.add(aula);
     		}
