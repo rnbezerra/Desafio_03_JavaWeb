@@ -14,14 +14,19 @@ public class AulaDAOTest {
 
 		
 		AulaDAO a= new AulaDAO();
-		List<Aula>  aulas = a.selecionarPorTurma(1);
+		Aula aula = a.selecionar(1);
 		
-		for (Aula aula : aulas) {
+		System.out.print(aula.getId() + "  " );
+		System.out.print(aula.getNome()  + "  " );
+		System.out.print(aula.getTurma()  + "  " );
+		System.out.println(aula.getData().getTime() );
+		
+	/*	for (Aula aula : aulas) {
 			System.out.print(aula.getId() + "  " );
 			System.out.print(aula.getNome()  + "  " );
 			System.out.print(aula.getTurma()  + "  " );
 			System.out.println(aula.getData().getTime() );
-		}
+		}*/
 	}
 
 }

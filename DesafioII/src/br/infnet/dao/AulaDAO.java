@@ -44,10 +44,10 @@ public class AulaDAO extends BaseDAO{
     		
     		String sql = "SELECT \"id\", \"nome\", \"IdTurma\", \"Data\" "
     					+ "FROM \"Aula\""
-    					+ "WHERE \"IdTurma\" = " + idTurma.toString();
+    					+ "WHERE \"IdTurma\" = ? ";
     		
     		PreparedStatement query = conexao.prepareStatement(sql);
-
+    		query.setInt(1, idTurma);
     		ResultSet resultados = query.executeQuery();
     		ArrayList<Aula> aulas = new ArrayList<Aula>();
     		while (resultados.next()) {
@@ -65,7 +65,26 @@ public class AulaDAO extends BaseDAO{
 
         
         public Aula selecionar(Integer aulaID) throws ClassNotFoundException,SQLException {
-        	return null;
+        	Connection conexao = getConexao();
+        	
+        	String sql = "SELECT \"id\", \"nome\", \"IdTurma\", \"Data\" "
+						+ "FROM \"Aula\""
+						+ "WHERE \"id\" = ? ";
+        	
+    		PreparedStatement query = conexao.prepareStatement(sql);
+    		query.setInt(1, aulaID);
+    		ResultSet resultados = query.executeQuery();
+    		Aula aula = null;
+    		
+    		if (resultados.next()) {
+    			aula = new Aula();
+    			aula.setId(resultados.getInt("id"));
+    			aula.setNome(resultados.getString("nome"));
+    			aula.setTurma(resultados.getInt("IdTurma") );
+    			aula.setData( Calendar.getInstance() );
+    			aula.getData().setTime( resultados.getDate("Data") );
+    		}
+    		return aula;
         }
         
 }
