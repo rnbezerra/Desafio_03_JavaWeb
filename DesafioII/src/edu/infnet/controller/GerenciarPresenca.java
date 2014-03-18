@@ -43,21 +43,12 @@ public class GerenciarPresenca extends HttpServlet {
 		
 		AlunoDAO dao = new AlunoDAO();	
 		PresencaDAO preDao = new PresencaDAO();
-		AulaDAO aulaDAO = new AulaDAO();
-		TurmaDAO turmaDAO = new TurmaDAO();
+		AulaDAO aulaDao = new AulaDAO();
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		String matricula = request.getParameter("matricula");
 		int tipo = Integer.parseInt(request.getParameter("tipo"));
-		int idAula = Integer.parseInt(request.getParameter("idAula"));
 		try {
-			List<Aluno> alunos = dao.selecionarPorTurma(id);
-			List<Aluno> alunosPresentes = preDao.selecionarPorAula(idAula);
-			List<Aula> aula = aulaDAO.selecionarPorTurma(id);
-			Turma turma = turmaDAO.selecionar(id);
-			
-		
-			
 			
 			PresencaDAO presenca = new PresencaDAO();
 			if (tipo == 0)
@@ -65,12 +56,10 @@ public class GerenciarPresenca extends HttpServlet {
 			else
 				presenca.marcarAusencia(id, matricula);
 			
-			request.setAttribute("alunolist", alunos);
-			request.setAttribute("presentalunolist", alunosPresentes);
-			request.setAttribute("aula", aula);
-			request.setAttribute("turma", turma);
+			Aula aula = aulaDao.selecionar(id);
 			
-			request.getRequestDispatcher("GestaoAula.jsp").forward(request, response);
+			request.getRequestDispatcher("ExibirAula?idAula="+id+"&idTurma="+aula.getTurma()).forward(request, response);
+//			ExibirAula?idAula=${aula.id}&idTurma=${turma.id}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
