@@ -19,7 +19,7 @@
 <c:forEach var="aula" items="${aulalist}">
 
 			<ul>
-				<li>${aula.nome} - <a href="GerenciarPresenca?id=${aula.id}">Visualizar Presentes</a></li>
+				<li>${aula.nome} - <a href="ExibirAula?idAula=${aula.id}&idTurma=${turma.id}">Visualizar Presentes</a></li>
 			</ul>
 
 </c:forEach>
