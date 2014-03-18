@@ -13,7 +13,7 @@
 <h2 align="center">${turma.nome}</h2>
 <h2>${aula.nome}</h2>
 
-<a href="AddAula.jsp">Incluir Aula</a>
+<a href="InserirAula?turma=${turma.id}">Incluir Aula</a>
 
 <c:forEach var="aula" items="${aulalist}">
 ${aula.nome} - <a href="GestaoAula?id=${aula.id}">Visualizar Presentes</a>
