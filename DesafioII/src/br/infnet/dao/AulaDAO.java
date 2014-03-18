@@ -11,15 +11,15 @@ import java.util.List;
 import br.infnet.domain.Aula;
 
 public class AulaDAO extends BaseDAO{
-
-	private final String strInsert = "INSERT INTO \"Aula\" (\"nome\", \"IdTurma\", \"Data\") VALUES (?, ?, ?)";
 	
         public void inserir(Aula aula) throws ClassNotFoundException, SQLException{
 
+        	String sql = "INSERT INTO \"Aula\" (\"nome\", \"IdTurma\", \"Data\") VALUES (?, ?, ?)";
+        	
 		    java.sql.Timestamp timestamp = new java.sql.Timestamp(aula.getData().getTimeInMillis());
 		    
 		    Connection conexao = getConexao();
-		        PreparedStatement query = conexao.prepareStatement(strInsert);
+		        PreparedStatement query = conexao.prepareStatement(sql);
 		        query.setString(1, aula.getNome());
 		        query.setInt(2, aula.getTurma());
 		        query.setTimestamp(3, timestamp);
@@ -29,11 +29,35 @@ public class AulaDAO extends BaseDAO{
         
         public void atualizar(Aula aula) throws ClassNotFoundException,
         SQLException {
+        
+        	java.sql.Timestamp timestamp = new java.sql.Timestamp(aula.getData().getTimeInMillis());
+        	
+        	String sql = "UPDATE \"Aula\""
+        			+ "SET \"nome\" = ?,"
+        			+ " \"IdTurma\" = ?,"
+        			+ " \"Data\" = ? "
+					+ "WHERE \"id\" = ? ";
+        	
+    		Connection conexao = getConexao();
+    		PreparedStatement query = conexao.prepareStatement(sql);
+    		query.setString(1, aula.getNome());
+    		query.setInt(2, aula.getTurma() );
+    		query.setTimestamp(3, timestamp);
+    		query.setInt(4, aula.getId() );
+    		query.execute();
         	
         }
         
         public void excluir(Integer aulaID) throws ClassNotFoundException,
         SQLException {
+
+        	String sql = "DELETE FROM \"Aula\""
+					+ "WHERE \"id\" = ? ";
+        	
+    		Connection conexao = getConexao();
+    		PreparedStatement query = conexao.prepareStatement(sql);
+    		query.setInt(1, aulaID);
+    		query.execute();
 
         }
 
