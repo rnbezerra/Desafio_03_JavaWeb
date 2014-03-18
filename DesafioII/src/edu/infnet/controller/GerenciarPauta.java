@@ -34,22 +34,19 @@ public class GerenciarPauta extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("id"));
 		AulaDAO dao = new AulaDAO();		
 		try {
-			List<Aula> aulas = dao.selecionarPorTurma(id);
+			List<Aula> aula = dao.selecionarPorTurma(id);
 			TurmaDAO turmadao = new TurmaDAO();
 			Turma turma = turmadao.selecionar(id);
-			request.setAttribute("aulalist", aulas);
+			request.setAttribute("aulalist", aula);
 			request.setAttribute("turma", turma);
 			request.getRequestDispatcher("GestaoPauta.jsp").forward(request, response);
 			
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
