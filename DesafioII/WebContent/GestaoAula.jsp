@@ -20,11 +20,11 @@ ${aula.nome}
                 <li>
                         ${aluno.nome}
                         
-                        <c:if test="${aula.AlunoEstaPresent(presentalunolist, aluno.matricula) == true}  ">
+                        <c:if test="${aula.AlunoEstaPresent(presentalunolist, aluno.matricula) == 1}">
                                 <a href="GerenciarPresenca?id=${aula.id}&matricula=${aluno.matricula}&tipo=1">Presente</a>
                         </c:if>
                         
-                        <c:if test="${aula.AlunoEstaPresent(presentalunolist, aluno.matricula) == false}">
+                        <c:if test="${aula.AlunoEstaPresent(presentalunolist, aluno.matricula) == 0}">
                                 <a href="GerenciarPresenca?id=${aula.id}&matricula=${aluno.matricula}&tipo=0">Ausente</a>
                         </c:if>
                         

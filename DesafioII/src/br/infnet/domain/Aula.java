@@ -36,14 +36,14 @@ public class Aula {
 		this.data = data;
 	}
 	
-	public boolean AlunoEstaPresent(ArrayList<Aluno> presentes, String matAluno){
+	public int AlunoEstaPresent(ArrayList<Aluno> presentes, String matAluno){
 		for (Aluno aluno : presentes) {
 			if(aluno.getMatricula().equalsIgnoreCase(matAluno)){
-				return true;
+				return 1;
 			}
 		}
 		
-		return false; 
+		return 0; 
 	}
 	
 }

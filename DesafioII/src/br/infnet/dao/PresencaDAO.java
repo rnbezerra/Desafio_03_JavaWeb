@@ -28,13 +28,12 @@ public class PresencaDAO extends BaseDAO{
 	{
 		Connection conexao = getConexao();
 		
-		String sql = "DELETE FROM \"PresencaAula\" (\"idaula\", \"matricula\") VALUES (?, ?)";
+		String sql = "DELETE FROM \"PresencaAula\" WHERE \"idaula\"=? AND \"matricula\"=?;";
 		
 		PreparedStatement query = conexao.prepareStatement(sql);
 		query.setInt(1, aulaId);
 		query.setString(2, matricula);
 		query.execute();
-		
 	}
 	
 	public List<Aluno> selecionarPorAula(Integer aulaId) throws ClassNotFoundException, SQLException
@@ -60,7 +59,7 @@ public class PresencaDAO extends BaseDAO{
 		}
 		
 		return alunos;
-
+		
 	}
 	
 }
