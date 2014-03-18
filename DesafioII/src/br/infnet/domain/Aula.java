@@ -1,5 +1,7 @@
 package br.infnet.domain;
 
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Aula {
@@ -33,4 +35,15 @@ public class Aula {
 	public void setData(Calendar data) {
 		this.data = data;
 	}
+	
+	public boolean AlunoEstaPresent(ArrayList<Aluno> presentes, String matAluno){
+		for (Aluno aluno : presentes) {
+			if(aluno.getMatricula().equalsIgnoreCase(matAluno)){
+				return true;
+			}
+		}
+		
+		return false; 
+	}
+	
 }
