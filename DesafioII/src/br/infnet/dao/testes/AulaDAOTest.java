@@ -1,8 +1,6 @@
 package br.infnet.dao.testes;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import br.infnet.dao.AulaDAO;
 import br.infnet.domain.Aula;
