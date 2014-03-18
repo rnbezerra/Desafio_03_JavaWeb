@@ -7,7 +7,7 @@ public class Aula {
 	private int id;
 	private int turma;
 	private String nome;
-	private Calendar data;
+	private Calendar data = Calendar.getInstance();
 	
 	public int getId() {
 		return id;
