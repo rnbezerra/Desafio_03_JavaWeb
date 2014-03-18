@@ -15,22 +15,23 @@ ${turma.nome}
 <h2>
 ${aula.nome}
 </h2>
-
-<c:forEach var="aluno" items="${alunolist}">
-
-${aluno.nome}
-
-<c:if test="${aluno.turmas == null }">
-	<a href="Presenca?id=${aula.id}&matricula=${aula.matricula}&tipo=0">associar</a>
-</c:if>
-
-<c:if test="${aluno.turmas != null }">
-	<a href="Presenca?id=${aula.id}&matricula=${aula.matricula}&tipo=1">Desassociar</a>
-</c:if>
-
-<hr />
-</c:forEach>
-
+<ul>
+        <c:forEach var="aluno" items="${alunolist}">
+                <li>
+                        ${aluno.nome}
+                        
+                        <c:if test="${aula.AlunoEstaPresent(presentalunolist, aluno.matricula)}  ">
+                                <a href="GerenciarPresenca?id=${aula.id}&matricula=${aula.matricula}&tipo=0">Presente</a>
+                        </c:if>
+                        
+                        <c:if test="${aula.AlunoEstaPresent(presentalunolist, aluno.matricula)}">
+                                <a href="GerenciarPresenca?id=${aula.id}&matricula=${aula.matricula}&tipo=1">Ausente</a>
+                        </c:if>
+                        
+                        <hr />
+                </li>
+        </c:forEach>
+</ul>
 
 </body>
 </html>

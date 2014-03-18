@@ -39,8 +39,6 @@ public class ExibirAula extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		
-		
 		AlunoDAO dao = new AlunoDAO();	
 		PresencaDAO preDao = new PresencaDAO();
 		AulaDAO aulaDAO = new AulaDAO();
@@ -51,7 +49,8 @@ public class ExibirAula extends HttpServlet {
 		try {
 			List<Aluno> alunos = dao.selecionarPorTurma(idTurma);
 			List<Aluno> alunosPresentes = preDao.selecionarPorAula(idAula);
-			List<Aula> aula = aulaDAO.selecionarPorTurma(idTurma);
+			Aula aula = aulaDAO.selecionar(idAula);
+			
 			Turma turma = turmaDAO.selecionar(idTurma);
 						
 			request.setAttribute("alunolist", alunos);
