@@ -16,7 +16,7 @@
 <a href="AddAula.jsp">Incluir Aula</a>
 
 <c:forEach var="aula" items="${aulalist}">
-${aula.nome} - <a href="GestaoAula?id=">Visualizar Presença</a>
+${aula.nome} - <a href="GestaoAula?id=${aula.id}">Visualizar Presença</a>
 </c:forEach>
 
 </body>

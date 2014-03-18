@@ -33,7 +33,7 @@ for (Turma turma : dao.selecionar()  ){
 
 	<a href="ExcluirTurma?id=<%=turma.getId() %> ">Excluir</a> |
 	<a href="GerenciarTurma?id=<%=turma.getId() %> ">Gerenciar</a> |
-	<a href="GerenciarTurma?id=<%=turma.getId() %> ">Pauta</a>
+	<a href="GerenciarPauta?id=<%=turma.getId() %> ">Pauta</a>
 	
 </li>
 
