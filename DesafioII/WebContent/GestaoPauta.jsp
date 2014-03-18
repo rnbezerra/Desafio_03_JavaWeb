@@ -14,9 +14,14 @@
 <h2>${aula.nome}</h2>
 
 <a href="InserirAula?turma=${turma.id}">Incluir Aula</a>
+<br>
 
 <c:forEach var="aula" items="${aulalist}">
-${aula.nome} - <a href="GestaoAula?id=${aula.id}">Visualizar Presentes</a>
+
+			<ul>
+				<li>${aula.nome} - <a href="GerenciarPresenca?id=${aula.id}">Visualizar Presentes</a></li>
+			</ul>
+
 </c:forEach>
 
 </body>
